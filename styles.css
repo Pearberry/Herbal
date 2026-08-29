@@ -1,0 +1,750 @@
+/* ==========================================================================
+   Pearl Gardens Design System: Sage & Cream CSS
+   ========================================================================== */
+
+:root {
+    /* Color Tokens */
+    --bg-cream: #fbfaf7;
+    --card-white: #ffffff;
+    --text-charcoal: #2d3530;
+    --text-muted: #6b7770;
+    --accent-sage: #5d7550; /* Primary Sage */
+    --accent-sage-dark: #46593a;
+    --accent-sage-light: #eff5eb;
+    --accent-mint: #8fbc8f;
+    --accent-gold: #c5a059; /* Botanical gold accents */
+    --border-color: #e5e8e3;
+    
+    /* System Status Colors */
+    --success-green: #487243;
+    --warning-orange: #d97706;
+    --danger-red: #c2410c;
+    
+    /* Layout Tokens */
+    --shadow-soft: 0 4px 20px rgba(93, 117, 80, 0.05);
+    --shadow-medium: 0 8px 30px rgba(93, 117, 80, 0.08);
+    --border-radius-sm: 8px;
+    --border-radius-md: 14px;
+    --border-radius-lg: 24px;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-cream);
+    color: var(--text-charcoal);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+/* Header Styles */
+.app-header {
+    background-color: var(--card-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem 2rem;
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.brand-logo i {
+    font-size: 2rem;
+    color: var(--accent-sage);
+}
+
+.brand-text h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--text-charcoal);
+}
+
+.brand-text .subtitle {
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.header-title h2 {
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+/* Layout Container */
+.app-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2rem;
+    flex: 1;
+}
+
+@media (max-width: 900px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Cards Design */
+.card {
+    background-color: var(--card-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.card-header {
+    background-color: var(--accent-sage-light);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    font-size: 1.2rem;
+    color: var(--accent-sage-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-header h3 i {
+    font-size: 1rem;
+    color: var(--accent-sage);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Inputs & Form Elements */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-charcoal);
+}
+
+select, input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-cream);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-charcoal);
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+    outline: none;
+}
+
+select:focus, input:focus {
+    border-color: var(--accent-sage);
+    background-color: var(--card-white);
+    box-shadow: 0 0 0 3px rgba(93, 117, 80, 0.1);
+}
+
+.input-action-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input-action-group input {
+    flex: 1;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-family: inherit;
+}
+
+.btn-primary {
+    background-color: var(--accent-sage);
+    color: var(--card-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-sage-dark);
+}
+
+.btn-accent {
+    background-color: var(--accent-gold);
+    color: var(--card-white);
+}
+
+.btn-accent:hover {
+    background-color: #ae8b47;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border-color: var(--border-color);
+    color: var(--text-charcoal);
+}
+
+.btn-outline:hover {
+    background-color: var(--accent-sage-light);
+    border-color: var(--accent-sage);
+    color: var(--accent-sage-dark);
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: var(--danger-red);
+    border-color: transparent;
+    padding: 0.5rem;
+}
+
+.btn-danger:hover {
+    background-color: rgba(194, 65, 12, 0.08);
+    border-radius: var(--border-radius-sm);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+}
+
+/* Recipe Builder List */
+.ingredients-list-header {
+    display: grid;
+    grid-template-columns: 1fr 120px 45px 35px;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.ingredients-list-header span:nth-child(2) {
+    text-align: right;
+}
+
+.recipe-ingredients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.ingredient-row {
+    display: grid;
+    grid-template-columns: 1fr 120px 45px 35px;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-smooth);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ingredient-row:hover {
+    background-color: #f7faf5;
+}
+
+.ingredient-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredient-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.ingredient-category {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    display: inline-block;
+    width: fit-content;
+    margin-top: 0.15rem;
+}
+
+/* Color Tags by Category */
+.category-tag-wax { color: #d97706; }
+.category-tag-solid { color: #5d7550; }
+.category-tag-brittle { color: #8e6241; }
+.category-tag-liquid { color: #0284c7; }
+
+/* Dynamic percentage layout */
+.ingredient-pct-control {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.ingredient-pct-control input[type="number"] {
+    padding: 0.35rem 0.5rem;
+    text-align: right;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+.ingredient-pct-control span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Locks & Toggles */
+.lock-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.lock-btn:hover {
+    background-color: rgba(93, 117, 80, 0.08);
+    color: var(--accent-sage);
+}
+
+.lock-btn.locked {
+    color: var(--accent-gold);
+}
+
+.slider-container {
+    grid-column: 1 / -1;
+    padding-top: 0.25rem;
+    display: flex;
+    align-items: center;
+}
+
+.slider-container input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border-color);
+    outline: none;
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-sage);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: var(--accent-sage-dark);
+}
+
+/* Add Ingredient Dropdown Wrapper */
+.add-ingredient-control {
+    margin-top: 1.5rem;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 1.5rem;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    padding-left: 2.5rem;
+}
+
+.select-wrapper .add-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-sage);
+    font-size: 0.9rem;
+}
+
+/* Progress bar / total */
+.recipe-total-bar {
+    padding: 1.25rem 1rem;
+    background-color: #f7faf6;
+    border-radius: var(--border-radius-sm);
+    margin-top: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.total-info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.total-val {
+    font-size: 1.05rem;
+}
+
+.total-val.valid {
+    color: var(--success-green);
+}
+
+.total-val.invalid {
+    color: var(--danger-red);
+}
+
+.progress-track {
+    background-color: var(--border-color);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--accent-sage);
+    transition: var(--transition-smooth);
+}
+
+.progress-fill.valid {
+    background-color: var(--success-green);
+}
+
+.progress-fill.invalid {
+    background-color: var(--danger-red);
+}
+
+.total-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Texture Analyzer UI */
+.gauge-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.gauge {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.gauge-body {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: var(--border-color);
+    box-sizing: border-box;
+}
+
+.gauge-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 200px;
+    background: conic-gradient(from 180deg at 100% 50%, var(--accent-sage-light) 0deg, var(--accent-sage) 90deg, var(--accent-gold) 180deg);
+    border-radius: 100px 0 0 100px;
+    transform-origin: 100% 50%;
+    transform: rotate(0deg);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gauge-cover {
+    position: absolute;
+    width: 150px;
+    height: 75px;
+    background: var(--card-white);
+    border-radius: 150px 150px 0 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+
+.gauge-cover #texture-score {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-charcoal);
+    line-height: 1.1;
+}
+
+.gauge-cover .label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.texture-verdict {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.texture-verdict h4 {
+    font-size: 1.35rem;
+    color: var(--accent-sage-dark);
+    margin-bottom: 0.35rem;
+}
+
+.texture-verdict p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Rebalancer Widget */
+.rebalance-widget {
+    background-color: var(--bg-cream);
+    border-radius: var(--border-radius-md);
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+}
+
+.rebalance-widget h4 {
+    font-size: 1rem;
+    color: var(--accent-sage-dark);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rebalance-widget h4 i {
+    color: var(--accent-gold);
+}
+
+.rebalance-widget .widget-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+}
+
+.target-profile-controls {
+    margin-bottom: 1.25rem;
+}
+
+.target-profile-controls label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.target-profile-selector-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.target-profile-selector-group input[type="number"] {
+    width: 90px;
+    padding: 0.5rem;
+}
+
+/* Summary List styles */
+.profile-stats {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.profile-stats li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.profile-stats li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: var(--text-charcoal);
+}
+
+.stat-val-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.badge {
+    padding: 0.15rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.badge-success { background-color: rgba(72, 114, 67, 0.12); color: var(--success-green); }
+.badge-warning { background-color: rgba(217, 119, 6, 0.12); color: var(--warning-orange); }
+.badge-danger { background-color: rgba(194, 65, 12, 0.12); color: var(--danger-red); }
+
+/* Scaler UI */
+.scale-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.scale-sheet {
+    background-color: var(--bg-cream);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    line-height: 1.4;
+}
+
+.batch-cost-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.batch-cost-summary strong {
+    font-size: 1.1rem;
+    color: var(--success-green);
+}
+
+/* Save Recipe styling */
+.save-recipe-card .export-actions {
+    margin-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.25rem;
+}
+
+/* App Footer */
+.app-footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--card-white);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: auto;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}

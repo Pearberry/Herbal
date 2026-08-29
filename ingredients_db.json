@@ -1,0 +1,251 @@
+{
+  "waxes": [
+    {
+      "name": "Beeswax",
+      "category": "Wax",
+      "hardness": 5.0,
+      "melting_point": "144°F – 149°F",
+      "absorption": "Slow",
+      "texture": "Hard Wax",
+      "finish": "Barrier/Protective",
+      "price_per_oz": 0.31
+    },
+    {
+      "name": "Candelilla Wax",
+      "category": "Wax",
+      "hardness": 10.0,
+      "is_veg": true,
+      "melting_point": "158°F – 163°F",
+      "absorption": "Slow",
+      "texture": "Very Hard Wax",
+      "finish": "Glossy/Film",
+      "price_per_oz": 1.18
+    }
+  ],
+  "solids": [
+    {
+      "name": "Shea Butter",
+      "category": "Solid",
+      "hardness": 0.3,
+      "melting_point": "90°F",
+      "absorption": "Medium",
+      "texture": "Soft Butter",
+      "finish": "Velvet",
+      "price_per_oz": 0.56
+    },
+    {
+      "name": "Coconut Oil (Raw)",
+      "category": "Solid",
+      "hardness": 0.3,
+      "melting_point": "76°F",
+      "absorption": "Medium",
+      "texture": "Soft Solid",
+      "finish": "Satin",
+      "price_per_oz": 0.47
+    },
+    {
+      "name": "Mango Butter",
+      "category": "Solid",
+      "hardness": 0.3,
+      "melting_point": "86°F",
+      "absorption": "Medium",
+      "texture": "Creamy Solid",
+      "finish": "Satin/Soft",
+      "price_per_oz": 1.25
+    },
+    {
+      "name": "Babassu Oil",
+      "category": "Solid",
+      "hardness": 0.3,
+      "melting_point": "76°F",
+      "absorption": "Fast",
+      "texture": "Soft Solid/Melts",
+      "finish": "Slick/Glossy",
+      "price_per_oz": 1.06
+    },
+    {
+      "name": "Hemp Butter",
+      "category": "Solid",
+      "hardness": 0.3,
+      "melting_point": "95°F",
+      "absorption": "Medium",
+      "texture": "Soft Butter",
+      "finish": "Satin",
+      "price_per_oz": 1.56
+    }
+  ],
+  "brittles": [
+    {
+      "name": "Cocoa Butter",
+      "category": "Brittle",
+      "hardness": 1.2,
+      "melting_point": "93°F – 100°F",
+      "absorption": "Slow",
+      "texture": "Hard Brittle Solid",
+      "finish": "Rich/Protective",
+      "price_per_oz": 1.25
+    },
+    {
+      "name": "Kokum Butter",
+      "category": "Brittle",
+      "hardness": 1.2,
+      "melting_point": "100°F – 104°F",
+      "absorption": "Fast",
+      "texture": "Very Hard Brittle",
+      "finish": "Dry Matte",
+      "price_per_oz": 1.56
+    },
+    {
+      "name": "Murumuru Butter",
+      "category": "Brittle",
+      "hardness": 1.2,
+      "melting_point": "91°F – 95°F",
+      "absorption": "Medium",
+      "texture": "Hard Butter",
+      "finish": "Satin/Glossy",
+      "price_per_oz": 1.56
+    },
+    {
+      "name": "Cupuaçu Butter",
+      "category": "Brittle",
+      "hardness": 1.2,
+      "melting_point": "86°F – 104°F",
+      "absorption": "Slow",
+      "texture": "Soft Brittle",
+      "finish": "Creamy/Heavy",
+      "price_per_oz": 1.69
+    }
+  ],
+  "liquids": [
+    {
+      "name": "Jojoba Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Fast",
+      "texture": "Thin Liquid",
+      "finish": "Satin/Silky",
+      "price_per_oz": 0.78
+    },
+    {
+      "name": "Sweet Almond Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Medium",
+      "texture": "Medium Liquid",
+      "finish": "Satin",
+      "price_per_oz": 0.47
+    },
+    {
+      "name": "Avocado Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Slow",
+      "texture": "Thick Liquid",
+      "finish": "Rich/Heavy",
+      "price_per_oz": 0.57
+    },
+    {
+      "name": "Apricot Kernel Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Fast",
+      "texture": "Thin Liquid",
+      "finish": "Satin/Silky",
+      "price_per_oz": 0.53
+    },
+    {
+      "name": "Castor Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Slow",
+      "texture": "Heavy Sticky Liquid",
+      "finish": "High Gloss",
+      "price_per_oz": 0.53
+    },
+    {
+      "name": "Rosehip Seed Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Fast",
+      "texture": "Light Liquid",
+      "finish": "Matte/Satin",
+      "price_per_oz": 3.75
+    },
+    {
+      "name": "Grapeseed Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Fast",
+      "texture": "Very Light Liquid",
+      "finish": "Light Satin",
+      "price_per_oz": 0.41
+    },
+    {
+      "name": "Squalane Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Fast",
+      "texture": "Thin Liquid",
+      "finish": "Satin/Silky",
+      "price_per_oz": 2.81
+    },
+    {
+      "name": "Red Raspberry Seed Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Fast",
+      "texture": "Light Liquid",
+      "finish": "Satin",
+      "price_per_oz": 2.87
+    },
+    {
+      "name": "Argan Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Medium",
+      "texture": "Medium Liquid",
+      "finish": "Satin",
+      "price_per_oz": 1.87
+    },
+    {
+      "name": "Sunflower Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Medium",
+      "texture": "Medium Liquid",
+      "finish": "Satin",
+      "price_per_oz": 0.37
+    },
+    {
+      "name": "Maracuja Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Fast",
+      "texture": "Light Liquid",
+      "finish": "Matte/Satin",
+      "price_per_oz": 7.50
+    },
+    {
+      "name": "Sea Buckthorn Oil",
+      "category": "Liquid",
+      "hardness": 0.0,
+      "melting_point": "Liquid",
+      "absorption": "Medium",
+      "texture": "Light Liquid",
+      "finish": "Satin",
+      "price_per_oz": 23.00
+    }
+  ]
+}

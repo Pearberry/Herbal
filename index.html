@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearl Gardens - Lip Balm Formulation Companion</title>
+    <meta name="description" content="A premium formulation assistant to design, scale, and balance natural lip balm recipes based on botanical ingredient properties.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand-logo">
+                <i class="fa-solid fa-seedling"></i>
+                <div class="brand-text">
+                    <h1>Pearl Gardens</h1>
+                    <span class="subtitle">Herbalism & Botanical Formulations</span>
+                </div>
+            </div>
+            <div class="header-title">
+                <h2>Lip Balm Formulation Companion</h2>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <!-- Main Formulator Area -->
+        <section class="formulator-section">
+            <div class="card recipe-builder-card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-flask"></i> Recipe Builder</h3>
+                    <div class="recipe-actions">
+                        <button id="btn-reset" class="btn btn-outline" title="Reset recipe to standard template">
+                            <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <!-- Preset Selector -->
+                    <div class="form-group preset-group">
+                        <label for="select-preset">Load Recipe Base / Saved Recipe</label>
+                        <select id="select-preset">
+                            <option value="standard">Sage Standard Base (Beeswax)</option>
+                            <option value="standard_veg">Sage Standard Base (Candelilla)</option>
+                            <option value="empty">Clear / Custom Recipe</option>
+                            <optgroup label="Saved Recipes" id="saved-recipes-group">
+                                <!-- Populated dynamically -->
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Ingredients List -->
+                    <div class="ingredients-list-header">
+                        <span>Ingredient Name</span>
+                        <span>Percentage (%)</span>
+                        <span>Lock</span>
+                    </div>
+                    <div id="recipe-ingredients" class="recipe-ingredients-list">
+                        <!-- Populated dynamically via app.js -->
+                    </div>
+
+                    <!-- Total percentage bar -->
+                    <div class="recipe-total-bar">
+                        <div class="total-info">
+                            <span>Total Percentage:</span>
+                            <span id="total-percentage-text" class="total-val">0.00%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div id="total-progress-bar" class="progress-fill"></div>
+                        </div>
+                        <div class="total-actions">
+                            <button id="btn-normalize" class="btn btn-small btn-accent" style="display: none;">
+                                <i class="fa-solid fa-scale-balanced"></i> Normalize to 100%
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Add Ingredient Area -->
+                    <div class="add-ingredient-control">
+                        <div class="select-wrapper">
+                            <select id="select-add-ingredient">
+                                <option value="" disabled selected>Add an ingredient...</option>
+                                <optgroup label="Waxes" id="optgroup-waxes"></optgroup>
+                                <optgroup label="Solid Oils & Butters" id="optgroup-solids"></optgroup>
+                                <optgroup label="Brittle Butters" id="optgroup-brittles"></optgroup>
+                                <optgroup label="Liquid Oils" id="optgroup-liquids"></optgroup>
+                            </select>
+                            <i class="fa-solid fa-plus add-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Side: Texture Prediction & Smart Solver -->
+        <section class="dashboard-section">
+            <!-- Texture Prediction Card -->
+            <div class="card texture-analyzer-card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-gauge-high"></i> Texture Analyzer</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Gauge Meter -->
+                    <div class="gauge-wrapper">
+                        <div class="gauge">
+                            <div class="gauge-body">
+                                <div id="gauge-fill" class="gauge-fill"></div>
+                                <div class="gauge-cover">
+                                    <span id="texture-score">125.5</span>
+                                    <span class="label">Firmness Score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Predicted Texture Status -->
+                    <div class="texture-verdict">
+                        <h4 id="texture-verdict-title">Standard Lip Balm</h4>
+                        <p id="texture-verdict-desc">Perfect balance of structural firmness and skin glide for twist-up tubes.</p>
+                    </div>
+
+                    <!-- Rebalancing Solver Widget -->
+                    <div class="rebalance-widget">
+                        <h4><i class="fa-solid fa-wand-magic-sparkles"></i> Smart Rebalancer</h4>
+                        <p class="widget-desc">Adjusted a recipe's ingredients? Set a target firmness profile and click Rebalance to automatically adjust unlocked ingredients to hit 100% and match the texture.</p>
+                        
+                        <div class="target-profile-controls">
+                            <label for="select-target-profile">Target Texture Profile:</label>
+                            <div class="target-profile-selector-group">
+                                <select id="select-target-profile">
+                                    <option value="110">Winter / Soft (Score 110)</option>
+                                    <option value="125.5" selected>Standard (Score 125.5)</option>
+                                    <option value="140">Summer / Pocket (Score 140)</option>
+                                    <option value="custom">Custom Hardness...</option>
+                                </select>
+                                <input type="number" id="input-custom-target" value="125.5" step="0.5" style="display: none;" title="Custom firmness score target">
+                            </div>
+                        </div>
+
+                        <button id="btn-rebalance" class="btn btn-primary btn-block">
+                            <i class="fa-solid fa-scale-balanced"></i> Smart Rebalance Recipe
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe Summary and cost -->
+            <div class="card summary-card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-list-check"></i> Physical & Cost Profile</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="profile-stats">
+                        <li>
+                            <span class="stat-label">Firmness Score:</span>
+                            <span id="stat-firmness" class="stat-value">0.0</span>
+                        </li>
+                        <li>
+                            <span class="stat-label">Comedogenic Rating:</span>
+                            <div class="stat-val-group">
+                                <span id="stat-comedogenic" class="stat-value">0.0</span>
+                                <span id="comedogenic-badge" class="badge badge-success">Low</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="stat-label">Skin Finish:</span>
+                            <span id="stat-finish" class="stat-value">Balm Glide</span>
+                        </li>
+                        <li>
+                            <span class="stat-label">Absorption Rate:</span>
+                            <span id="stat-absorption" class="stat-value">Medium</span>
+                        </li>
+                        <li>
+                            <span class="stat-label">Estimated Cost:</span>
+                            <span id="stat-cost" class="stat-value">$0.00 / Oz</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Batch Scaling Card -->
+            <div class="card scaler-card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-expand"></i> Batch Scaling Calculator</h3>
+                </div>
+                <div class="card-body">
+                    <div class="scale-inputs">
+                        <div class="form-group">
+                            <label for="input-scale-amount">Scale Amount</label>
+                            <input type="number" id="input-scale-amount" value="10" min="0.1" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="select-scale-unit">Scale Unit</label>
+                            <select id="select-scale-unit">
+                                <option value="tubes" selected>Tubes (0.15 Oz each)</option>
+                                <option value="grams">Grams (g)</option>
+                                <option value="ounces">Ounces (oz)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="scale-output-wrapper">
+                        <h4>Raw Materials Weight sheet:</h4>
+                        <div id="batch-scale-sheet" class="scale-sheet">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <div class="batch-cost-summary">
+                            <span>Estimated Raw Materials Cost:</span>
+                            <strong id="batch-total-cost">$0.00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Recipe Card -->
+            <div class="card save-recipe-card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-bookmark"></i> Save / Export Formula</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="input-recipe-name">Formula Name</label>
+                        <div class="input-action-group">
+                            <input type="text" id="input-recipe-name" placeholder="Pearl Gardens Balm #1" title="Formula name">
+                            <button id="btn-save-recipe" class="btn btn-accent">
+                                <i class="fa-solid fa-floppy-disk"></i> Save
+                            </button>
+                        </div>
+                    </div>
+                    <div class="export-actions">
+                        <button id="btn-copy-markdown" class="btn btn-outline btn-block">
+                            <i class="fa-brands fa-markdown"></i> Copy Recipe (Markdown Sheet)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 Pearl Gardens. Handcrafted with precision and care.</p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>

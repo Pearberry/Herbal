@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pearl Gardens - Lip Balm Formulation Companion</title>
-    <meta name="description" content="A premium formulation assistant to design, scale, and balance natural lip balm recipes based on botanical ingredient properties.">
+    <meta name="description"
+        content="A premium formulation assistant to design, scale, and balance natural lip balm recipes based on botanical ingredient properties.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Birthday Celebration Banner (August 31) -->
     <div id="birthday-banner" class="birthday-banner" style="display: none;">
         <div class="birthday-content">
             <span class="birthday-icon">🎂</span>
-            <span class="birthday-text">Happy Birthday, Jem! 🎉 Made with love for your botanical creations 🌿</span>
+            <span class="birthday-text">Happy Birthday, Jem! 🎉 Many more wonderful botanical creations to come
+                🌿</span>
             <span class="birthday-icon">✨</span>
         </div>
     </div>
@@ -133,14 +139,17 @@
                     <!-- Predicted Texture Status -->
                     <div class="texture-verdict">
                         <h4 id="texture-verdict-title">Standard Lip Balm</h4>
-                        <p id="texture-verdict-desc">Perfect balance of structural firmness and skin glide for twist-up tubes.</p>
+                        <p id="texture-verdict-desc">Perfect balance of structural firmness and skin glide for twist-up
+                            tubes.</p>
                     </div>
 
                     <!-- Rebalancing Solver Widget -->
                     <div class="rebalance-widget">
                         <h4><i class="fa-solid fa-wand-magic-sparkles"></i> Smart Rebalancer</h4>
-                        <p class="widget-desc">Adjusted a recipe's ingredients? Set a target firmness profile and click Rebalance to automatically adjust unlocked ingredients to hit 100% and match the texture.</p>
-                        
+                        <p class="widget-desc">Adjusted a recipe's ingredients? Set a target firmness profile and click
+                            Rebalance to automatically adjust unlocked ingredients to hit 100% and match the texture.
+                        </p>
+
                         <div class="target-profile-controls">
                             <label for="select-target-profile">Target Texture Profile:</label>
                             <div class="target-profile-selector-group">
@@ -150,7 +159,8 @@
                                     <option value="140">Summer / Pocket (Score 140)</option>
                                     <option value="custom">Custom Hardness...</option>
                                 </select>
-                                <input type="number" id="input-custom-target" value="125.5" step="0.5" style="display: none;" title="Custom firmness score target">
+                                <input type="number" id="input-custom-target" value="125.5" step="0.5"
+                                    style="display: none;" title="Custom firmness score target">
                             </div>
                         </div>
 
@@ -238,7 +248,8 @@
                     <div class="form-group">
                         <label for="input-recipe-name">Formula Name</label>
                         <div class="input-action-group">
-                            <input type="text" id="input-recipe-name" placeholder="Pearl Gardens Balm #1" title="Formula name">
+                            <input type="text" id="input-recipe-name" placeholder="Pearl Gardens Balm #1"
+                                title="Formula name">
                             <button id="btn-save-recipe" class="btn btn-accent">
                                 <i class="fa-solid fa-floppy-disk"></i> Save
                             </button>
@@ -261,4 +272,5 @@
     <!-- Custom JS -->
     <script src="app.js"></script>
 </body>
+
 </html>

@@ -51,6 +51,81 @@ h1, h2, h3, h4, .subtitle {
     font-weight: 600;
 }
 
+/* Birthday Celebration Banner */
+.birthday-banner {
+    background: linear-gradient(135deg, #c5a059 0%, #769666 50%, #5d7550 100%);
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(93, 117, 80, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 110;
+    animation: fadeInDown 0.6s ease-out;
+}
+
+.birthday-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.birthday-icon {
+    font-size: 1.25rem;
+    display: inline-block;
+    animation: gentleWiggle 2s infinite ease-in-out;
+}
+
+.birthday-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+}
+
+.birthday-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(197, 160, 89, 0.18);
+    color: #ae8b47;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+@keyframes gentleWiggle {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-8deg) scale(1.1); }
+    75% { transform: rotate(8deg) scale(1.1); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-100%); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .birthday-content {
+        font-size: 0.85rem;
+        gap: 0.4rem;
+    }
+    .birthday-text {
+        font-size: 0.9rem;
+    }
+}
+
 /* Header Styles */
 .app-header {
     background-color: var(--card-white);

@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     initializeUI();
     loadRecipePreset("standard");
+    checkBirthday();
 });
 
 // Helper: Find ingredient item details from database
@@ -764,3 +765,122 @@ function copyRecipeToClipboardMarkdown() {
         console.error("Could not copy text to clipboard: ", err);
     });
 }
+
+// Birthday Detection & Celebration (August 31)
+function checkBirthday() {
+    const now = new Date();
+    // In JavaScript Date, months are 0-indexed: August is index 7
+    const isAugust31 = (now.getMonth() === 7 && now.getDate() === 31);
+
+    // Support URL parameters for manual testing (e.g. ?birthday=true or ?bday=1)
+    const urlParams = new URLSearchParams(window.location.search);
+    const forceBirthday = urlParams.has("birthday") || urlParams.has("bday");
+
+    if (isAugust31 || forceBirthday) {
+        // Show celebratory announcement banner
+        const banner = document.getElementById("birthday-banner");
+        if (banner) {
+            banner.style.display = "block";
+        }
+
+        // Add special celebratory touch to subtitle
+        const subtitle = document.getElementById("app-subtitle");
+        if (subtitle) {
+            subtitle.innerHTML = `✨ Happy Birthday, Jem! 🎂 ✨`;
+            subtitle.style.color = "var(--accent-gold)";
+            subtitle.style.fontWeight = "700";
+        }
+
+        // Add birthday edition badge to header title
+        const headerTitle = document.getElementById("app-header-title");
+        if (headerTitle && !document.querySelector(".birthday-badge")) {
+            const badge = document.createElement("span");
+            badge.className = "birthday-badge";
+            badge.innerHTML = `<i class="fa-solid fa-gift"></i> Birthday Edition`;
+            headerTitle.appendChild(badge);
+        }
+
+        // Launch celebratory confetti burst
+        launchConfetti();
+    }
+}
+
+// Lightweight Botanical Confetti Particle System
+function launchConfetti() {
+    const canvas = document.createElement("canvas");
+    canvas.id = "birthday-confetti-canvas";
+    canvas.style.position = "fixed";
+    canvas.style.top = "0";
+    canvas.style.left = "0";
+    canvas.style.width = "100vw";
+    canvas.style.height = "100vh";
+    canvas.style.pointerEvents = "none";
+    canvas.style.zIndex = "9999";
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext("2d");
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    const colors = ["#c5a059", "#5d7550", "#8fbc8f", "#e6c387", "#f3e8d2", "#d97706"];
+    const particles = [];
+    const particleCount = 65;
+
+    for (let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: Math.random() * width,
+            y: Math.random() * -height * 0.5,
+            size: Math.random() * 8 + 4,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            speedY: Math.random() * 2.5 + 1.2,
+            speedX: Math.random() * 2 - 1,
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 4,
+            opacity: 1
+        });
+    }
+
+    let startTime = performance.now();
+    const duration = 4500; // 4.5 seconds
+
+    function render(time) {
+        const elapsed = time - startTime;
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach(p => {
+            p.y += p.speedY;
+            p.x += Math.sin(p.y * 0.02) + p.speedX;
+            p.rotation += p.rotationSpeed;
+
+            if (elapsed > duration - 1500) {
+                p.opacity = Math.max(0, (duration - elapsed) / 1500);
+            }
+
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.globalAlpha = p.opacity;
+            ctx.fillStyle = p.color;
+
+            // Draw botanical petal / confetti shape
+            ctx.beginPath();
+            ctx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        });
+
+        if (elapsed < duration) {
+            requestAnimationFrame(render);
+        } else {
+            canvas.remove();
+        }
+    }
+
+    requestAnimationFrame(render);
+}
+

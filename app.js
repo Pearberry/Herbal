@@ -187,7 +187,7 @@ function initializeUI() {
 
     // Batch scaling controls
     document.getElementById("input-scale-amount").addEventListener("input", updateBatchScaling);
-    document.getElementById("select-scale-unit").addEventListener("change", updateBatchScaling);
+    document.getElementById("input-scale-unit").addEventListener("input", updateBatchScaling);
 
     // Save recipe logic
     document.getElementById("btn-save-recipe").onclick = () => {
@@ -531,8 +531,9 @@ function updateCalculations() {
     else if (avgAbsorption > 2.3) absorbText.textContent = "Slow Absorbing";
     else absorbText.textContent = "Medium Absorbing";
 
-    // Cost Display
-    document.getElementById("stat-cost").textContent = `$${totalCost.toFixed(2)} / Oz`;
+    // Cost Display: Show both per Oz and per Gram (1 oz = 28.3495 g)
+    const costPerGram = totalCost / 28.3495;
+    document.getElementById("stat-cost").textContent = `$${totalCost.toFixed(2)} / oz  ($${costPerGram.toFixed(3)} / g)`;
 
     // Trigger Batch scaling update
     updateBatchScaling();
@@ -641,10 +642,10 @@ function runSmartRebalance() {
     updateCalculations();
 }
 
-// Batch weight calculations
+// Batch weight calculations (using grams as the primary formulation unit)
 function updateBatchScaling() {
-    const scaleAmt = parseFloat(document.getElementById("input-scale-amount").value) || 10;
-    const scaleUnit = document.getElementById("select-scale-unit").value;
+    const scaleAmtGrams = parseFloat(document.getElementById("input-scale-amount").value) || 50;
+    const scaleUnitLabel = document.getElementById("input-scale-unit") ? document.getElementById("input-scale-unit").value.trim() : "grams";
     const scaleSheet = document.getElementById("batch-scale-sheet");
 
     if (recipe.length === 0) {
@@ -653,37 +654,20 @@ function updateBatchScaling() {
         return;
     }
 
-    let totalWeightOz = 0;
-    let displayUnit = "oz";
-
-    if (scaleUnit === "tubes") {
-        // Standard lip balm tubes: 0.15 ounces (approx. 4.25 grams)
-        totalWeightOz = scaleAmt * 0.15;
-        displayUnit = "oz";
-    } else if (scaleUnit === "grams") {
-        totalWeightOz = scaleAmt * 0.035274; // g to oz conversion
-        displayUnit = "g";
-    } else {
-        totalWeightOz = scaleAmt;
-        displayUnit = "oz";
-    }
-
     let sheetText = "";
     let totalBatchCost = 0.0;
 
     recipe.forEach(item => {
         const ing = findIngredient(item.name);
         if (ing) {
-            const ingWeightOz = (item.percentage / 100.0) * totalWeightOz;
+            // Calculate weight in grams directly
+            const ingWeightG = (item.percentage / 100.0) * scaleAmtGrams;
+            // 1 oz = 28.3495 grams for cost calculation from price_per_oz
+            const ingWeightOz = ingWeightG / 28.3495;
             const ingCost = ingWeightOz * ing.price_per_oz;
             totalBatchCost += ingCost;
 
-            if (displayUnit === "g") {
-                const ingWeightG = ingWeightOz * 28.3495; // oz to grams
-                sheetText += `${item.name.padEnd(24)}: ${ingWeightG.toFixed(2).padStart(6)} g  (${item.percentage.toFixed(1)}%)\n`;
-            } else {
-                sheetText += `${item.name.padEnd(24)}: ${ingWeightOz.toFixed(3).padStart(6)} oz (${item.percentage.toFixed(1)}%)\n`;
-            }
+            sheetText += `${item.name.padEnd(24)}: ${ingWeightG.toFixed(2).padStart(6)} g  (${item.percentage.toFixed(1)}%)\n`;
         }
     });
 
@@ -748,9 +732,9 @@ function copyRecipeToClipboardMarkdown() {
     md += `\n`;
     
     // Batch scaling
-    const scaleAmt = parseFloat(document.getElementById("input-scale-amount").value) || 10;
-    const scaleUnit = document.getElementById("select-scale-unit").value;
-    md += `## Batch Scaling (${scaleAmt} ${scaleUnit})\n\n`;
+    const scaleAmt = parseFloat(document.getElementById("input-scale-amount").value) || 50;
+    const scaleUnit = document.getElementById("input-scale-unit") ? document.getElementById("input-scale-unit").value.trim() : "grams";
+    md += `## Batch Scaling (${scaleAmt} g - ${scaleUnit})\n\n`;
     
     const scaleSheetText = document.getElementById("batch-scale-sheet").textContent;
     const costText = document.getElementById("batch-total-cost").textContent;
